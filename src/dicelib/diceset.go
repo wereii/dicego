@@ -2,14 +2,14 @@ package dicelib
 
 import "math/rand"
 
-// DiceSet : Set of N dices with M faces
-// basically your throw of
+// DiceSet : Set of N M-face dices
+//  Basically your hand of N dices.
 type DiceSet struct {
 	DicesList *[]*Dice
 	randgen   *rand.Rand
 }
 
-// NewDiceSet :
+// NewDiceSet : Create DiceSet
 func NewDiceSet(diceFaces int, diceAmount int, seed int64) *DiceSet {
 	rSrc := rand.NewSource(seed)
 	dRand := rand.New(rSrc)
@@ -24,7 +24,7 @@ func NewDiceSet(diceFaces int, diceAmount int, seed int64) *DiceSet {
 	return dSet
 }
 
-// Throw : Rolls all underyling dices in the set
+// Throw : Rolls all underlying dices in the set
 func (dset *DiceSet) Throw() {
 	for i := 0; i < len(*dset.DicesList); i++ {
 		(*dset.DicesList)[i].roll()

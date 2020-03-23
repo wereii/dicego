@@ -2,13 +2,14 @@ package dicelib
 
 import "math/rand"
 
-// Dice : a n-face dice struct
+// Dice : a n-face dice struct with Random capabilities
 type Dice struct {
 	faces   int
 	value   int
 	randgen *rand.Rand
 }
 
+// roll : Roll the dice, changing it's value state
 func (dice *Dice) roll() {
 	dice.value = dice.randgen.Intn(dice.faces) + 1
 }
