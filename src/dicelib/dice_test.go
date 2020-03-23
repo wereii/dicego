@@ -31,11 +31,9 @@ func TestMakeDice(t *testing.T) {
 func TestRoll(t *testing.T) {
 	diceFaces := 6
 
-	eSrc := rand.NewSource(defaultRandSeed)
-	expRand := rand.New(eSrc)
+	expRand := rand.New(rand.NewSource(defaultRandSeed))
 
-	gSrc := rand.NewSource(defaultRandSeed)
-	gotRand := rand.New(gSrc)
+	gotRand := rand.New(rand.NewSource(defaultRandSeed))
 
 	exp := &Dice{faces: diceFaces, randgen: expRand}
 	exp.roll()
